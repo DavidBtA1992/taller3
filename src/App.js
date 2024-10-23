@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Login from "./Components/Login/Login";
+import { useState } from "react";
+import Create from "./Components/Create/Create";
 
 function App() {
+
+  const [dataFromLogin, setDataFromLogin] = useState("")
+
+  function handleDataFromLogin(data) {
+    setDataFromLogin(data);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Login sendDataToParent={handleDataFromLogin}/>
+      <Create token={dataFromLogin}/>
+      <h1>Logueo exitoso, su Token es: {dataFromLogin}</h1>
     </div>
   );
 }
